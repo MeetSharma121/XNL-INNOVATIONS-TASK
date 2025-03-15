@@ -1,109 +1,102 @@
-#PHASE 5: TESTING, VALIDATION, AND CONTINUOUS
-IMPROVEMENT
-# AI Model Testing and Monitoring Framework
+# 📌 XNL Intern Task
 
-This framework provides comprehensive tools for testing, validating, and continuously improving AI models. It includes components for model evaluation, drift detection, continuous training, and custom test suites.
+## 📖 Overview
+The **XNL Intern Task** is a robust testing and monitoring framework designed for machine learning models. It provides tools for model evaluation, drift detection, continuous training, and custom test suites to ensure model reliability and performance over time. This framework is built using Python, Scikit-learn, and custom modules for drift detection and continuous training.
 
-## Components
+---
 
-### 1. Model Evaluation (`model_evaluation/evaluator.py`)
-- Comprehensive metrics calculation (accuracy, precision, recall, F1)
-- NLP-specific metrics (BLEU, ROUGE scores)
-- K-fold cross-validation support
-- Edge case evaluation
+## � Framework Preview
 
-### 2. Drift Detection (`monitoring/drift_detector.py`)
-- Data drift detection using statistical tests
-- Concept drift detection through performance monitoring
-- Wasserstein distance calculation
-- Historical drift tracking
+<table>
+  <tr>
+    <th style="width: 50%">📊 Drift Detection</th>
+    <th style="width: 50%">🔄 Continuous Training</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://via.placeholder.com/300" width="250">
+    </td>
+    <td align="center">
+      <img src="https://via.placeholder.com/300" width="250">
+    </td>
+  </tr>
+</table>
 
-### 3. Continuous Training (`monitoring/continuous_trainer.py`)
-- Automated model retraining based on drift detection
-- Performance threshold monitoring
-- Model versioning and storage
-- Training history tracking
+---
 
-### 4. Custom Test Suites (`test_suites/custom_test_suite.py`)
-- Support for custom test cases
-- Edge case testing
-- Multi-turn conversation testing
-- Test result storage and analysis
+## 🚀 Features
 
-## Usage
+### 1️⃣ **Model Evaluation**
+- Perform **cross-validation** to assess model performance.
+- Generate detailed metrics for model evaluation.
 
-### Model Evaluation
-```python
-from testing.model_evaluation.evaluator import ModelEvaluator
+### 2️⃣ **Drift Detection**
+- Detect **data drift** using statistical tests (Kolmogorov-Smirnov, Wasserstein distance).
+- Monitor **concept drift** by tracking model performance over time.
 
-evaluator = ModelEvaluator(model, k_folds=5)
-metrics = evaluator.perform_cross_validation(X, y)
-nlp_metrics = evaluator.calculate_nlp_metrics(references, predictions)
+### 3️⃣ **Continuous Training**
+- Automatically retrain models when drift is detected.
+- Save model versions for reproducibility.
+
+### 4️⃣ **Custom Test Suite**
+- Add **edge cases** and **conversation tests** (if applicable).
+- Run comprehensive test suites to validate model behavior.
+
+### 5️⃣ **Logging & Monitoring**
+- Log all events (training, drift detection, testing) for auditability.
+- Generate summaries for drift, training, and test results.
+
+---
+
+## 🛠️ **Tech Stack**
+- **Python**: Core programming language.
+- **Scikit-learn**: Machine learning model training and evaluation.
+- **NumPy**: Numerical computations and data generation.
+- **Pandas**: Data manipulation and analysis.
+- **Joblib**: Model serialization and storage.
+- **Logging**: Event logging and monitoring.
+
+---
+
+## 📂 **Project Structure**
+plaintext
+```
+📦 xnl-intern-task
+ ┣ 📜 README.md                 # Project documentation
+ ┣ 📜 main.py                   # Main script to run the framework
+ ┣ 📜 requirements.txt          # Dependencies
+ ┣ 📂 testing                   # Testing and monitoring modules
+ ┃ ┣ 📂 model_evaluation        # Model evaluation scripts
+ ┃ ┃ ┗ 📜 evaluator.py         # Model evaluator module
+ ┃ ┣ 📂 monitoring              # Monitoring scripts
+ ┃ ┃ ┣ 📜 drift_detector.py    # Drift detection module
+ ┃ ┃ ┗ 📜 continuous_trainer.py# Continuous training module
+ ┃ ┣ 📂 test_suites            # Custom test suites
+ ┃ ┃ ┗ 📜 custom_test_suite.py # Custom test suite module
+ ┣ 📂 logs                     # Log files
+ ┣ 📂 models                   # Saved model versions
+ ┣ 📂 results                  # Test and evaluation results
+
+---
+```
+## 📦 **Installation & Setup**
+1️⃣ **Clone the repository:**
+```sh
+git clone https://github.com/your-username/react-native-todo-list-app.git
+cd react-native-todo-list-app
 ```
 
-### Drift Detection
-```python
-from testing.monitoring.drift_detector import DriftDetector
-
-detector = DriftDetector(reference_data, window_size=1000)
-drift_detected, metrics = detector.detect_data_drift(new_data)
-```
-
-### Continuous Training
-```python
-from testing.monitoring.continuous_trainer import ContinuousTrainer
-
-trainer = ContinuousTrainer(model, drift_detector)
-retrained, metrics = trainer.check_and_retrain(new_data, new_labels)
-```
-
-### Custom Test Suite
-```python
-from testing.test_suites.custom_test_suite import CustomTestSuite, TestCase
-
-test_suite = CustomTestSuite(model, evaluator)
-test_suite.add_edge_case(input_data, expected_output, "Test description")
-results = test_suite.run_tests()
-```
-
-## Installation
-
-1. Install required dependencies:
-```bash
+2️⃣ **Install dependencies:**
+```sh
 pip install -r requirements.txt
+
 ```
 
-2. Ensure NLTK data is downloaded:
-```python
-import nltk
-nltk.download('punkt')
+3️⃣ **Start the Expo development server:**
+```sh
+python main.py
 ```
+---
 
-## Best Practices
+Happy Coding! 🚀
 
-1. **Regular Testing**
-   - Run the test suite regularly, especially after model updates
-   - Monitor drift detection results continuously
-   - Save and analyze test results over time
-
-2. **Drift Management**
-   - Set appropriate thresholds for drift detection
-   - Regularly update reference data
-   - Monitor retraining frequency
-
-3. **Performance Monitoring**
-   - Track metrics over time
-   - Set up alerts for significant performance drops
-   - Maintain comprehensive test coverage
-
-4. **Data Management**
-   - Keep test data separate from training data
-   - Regularly update test cases
-   - Document edge cases and their handling
-
-## Contributing
-
-1. Follow the existing code structure
-2. Add tests for new features
-3. Update documentation as needed
-4. Maintain type hints and docstrings 
